@@ -1,0 +1,73 @@
+
+TEMA 1 Protocoale de Comunicatie
+
+--------------------------------------------------------------------------------
+
+Nume: Roboiu Simona Alina
+Grupa: 325
+Seria: CC
+
+--------------------------------------------------------------------------------
+
+Detalii de implementare:
+
+1) Fisiere trimise: recv.c si send.c (surse scrise de mine), lib.h - contine
+frame-ul si cateva functii necesare, restul fisierelor sunt din scheletul de
+laborator 3 (Makefile, folderul link_emulator, run_experiment.sh) 
+
+2) Continut fisiere si explicatii:
+
+Am lucrat pe scheletul din laboratorul 3.
+
+In lib.h am definit structura frame ce contine seq_nr, payload si checksum. 
+Am scris functia int recv_message_timeout(int timeout, msg* message) care 
+primeste un mesaj implementand mecanismul de timeout. Continutul functie este 
+asemantor celui din link_emulator cu exceptia faptului ca este de tip int si 
+trimit mesajul ca parametru.
+De asemenea, am scris functia calc_parity() care calculeaza checksum-ul pentru 
+un string trimis ca parametru si functia get_binary_checksum() care imi creeaza
+vectorul de checksum pentru a scrie in fisierul de log cei 8 biti.
+
+Fisierele recv.c si send.c contin o transpunere si adaptare a scheletului de 
+cod din enuntul temei. Am incercat sa respect structura scheletului de cod, am
+inserat si comentarii sugestive, astfel ca cele doua fisiere ar trebui sa aiba
+comportamentul dorit dupa modelul dat.
+Ca si moment de oprire trimitere/receptie pachete trimit ceva 'special' adica
+in campul len pun valoarea 100 pentru ca aceasta nu va fi niciodata pentru un
+pachet valid, fiind intre 0 si 60 si am mai adaugat la checksum valoarea -1.
+Astfel stiu ca s-a terminat trimiterea de pachete.
+
+
+Timpul de timeout l-am ales dupa un test facut in prealabil de mine. Am testat 
+pe un singur pachet cat dureaza primirea unui mesaj, prelucrarea si trimiterea
+ACK-ului si apoi am considerat acest interval ca fiind cel pentru timeout.
+Specific pentru valoarea de DELAY=1. Pentru alte valori ale delay-ului si timpul
+de intarziere va fi diferit.
+
+Intarzierea pachetelor am facut-o printr-un sleep() la un numar random intre 1 
+si 10 pachete trimise. Valoarea lui sleep este mai mare decat cea de timeout si 
+de aceea are loc o intarziere.
+
+Am compilat si am rulat tema. Trimite un fisier si il primeste corect in 
+conditiile prezentate mai sus si creeaza un fisier log.txt. Pe fisiere cu 
+extensia.txt am testat pana la corupere de 99% si functioneaza corect. De 
+asemenea se primesc si alte tipuri de fisiere(pdf, jpg).
+
+--------------------------------------------------------------------------------
+Rulare:
+
+Se ruleaza trimitand ca argument numele fisierului din care citesc pentru send.c
+(in linia de comanda) si cel in care scriu pentru recv.c (in run_experiment.sh). 
+In run_experiment.sh este scris explicit numele fisierului de out pentru recv.c,
+iar in linia de comanda rulez scriptul cu parametru numele fisierului din care 
+citesc.
+
+--------------------------------------------------------------------------------
+Concluzii generale:
+
+Tema nu pot sa zic ca a fost foarte grea, dar timpul nu m-a lasat sa lucrez prea
+mult, avand si alte teme, proiecte extra-facultate. Sper ca pentru urmatoarele
+sa pot sa imi aloc mai mult timp mai ales ca acesta a fost o tema accesibila.
+Am fost placut surprinsa cand am vazut ca pot sa reconstitui imagini si fisiere
+pdf corect prin aceasta tema.
+--------------------------------------------------------------------------------
