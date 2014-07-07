@@ -21,7 +21,7 @@ Am lucrat pe scheletul din laboratorul 3.
 
 In lib.h am definit structura frame ce contine seq_nr, payload si checksum. 
 Am scris functia int recv_message_timeout(int timeout, msg* message) care 
-primeste un mesaj implementand mecanismul de timeout. Continutul functie este 
+primeste un mesaj implementand mecanismul de timeout. Continutul functiei este 
 asemantor celui din link_emulator cu exceptia faptului ca este de tip int si 
 trimit mesajul ca parametru.
 De asemenea, am scris functia calc_parity() care calculeaza checksum-ul pentru 
@@ -62,12 +62,4 @@ In run_experiment.sh este scris explicit numele fisierului de out pentru recv.c,
 iar in linia de comanda rulez scriptul cu parametru numele fisierului din care 
 citesc.
 
---------------------------------------------------------------------------------
-Concluzii generale:
-
-Tema nu pot sa zic ca a fost foarte grea, dar timpul nu m-a lasat sa lucrez prea
-mult, avand si alte teme, proiecte extra-facultate. Sper ca pentru urmatoarele
-sa pot sa imi aloc mai mult timp mai ales ca acesta a fost o tema accesibila.
-Am fost placut surprinsa cand am vazut ca pot sa reconstitui imagini si fisiere
-pdf corect prin aceasta tema.
 --------------------------------------------------------------------------------
